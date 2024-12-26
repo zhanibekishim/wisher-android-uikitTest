@@ -5,23 +5,19 @@ buildscript {
         maven { url = uri("https://jitpack.io") }
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:8.6.0")
+        classpath("com.android.tools.build:gradle:8.5.0")
     }
 }
-
 plugins {
-    alias(libs.plugins.android.library)
-    alias(libs.plugins.jetbrains.kotlin.android)
+    id("com.android.library")
+    kotlin("android")
     id("maven-publish")
 }
-
 android {
     namespace = "com.jax.connect_sdk"
     compileSdk = 35
-
     defaultConfig {
         minSdk = 30
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
@@ -45,7 +41,9 @@ android {
     }
 }
 
-dependencies {}
+dependencies {
+    implementation("androidx.core:core-ktx:1.16.0-alpha01")
+}
 
 afterEvaluate {
     publishing {
@@ -54,7 +52,7 @@ afterEvaluate {
                 from(components["release"])
                 groupId = "com.github.zhanibekishim"
                 artifactId = "connect-sdk"
-                version = "1.5"
+                version = "1.10"
             }
         }
     }
