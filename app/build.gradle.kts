@@ -50,7 +50,7 @@ android {
 }
 
 dependencies {
-    implementation(project(":connect-sdk"))
+    implementation("com.github.zhanibekishim:wisher-android-uikitTest:1.1")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)

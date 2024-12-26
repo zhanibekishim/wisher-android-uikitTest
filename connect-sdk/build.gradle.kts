@@ -1,14 +1,23 @@
-import com.android.sdklib.computeFullReleaseName
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url = uri("https://jitpack.io") }
+    }
+    dependencies {
+        classpath("com.android.tools.build:gradle:8.6.0")
+    }
+}
 
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
-    id ("maven-publish")
+    id("maven-publish")
 }
 
 android {
     namespace = "com.jax.connect_sdk"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         minSdk = 30
@@ -26,6 +35,7 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -43,8 +53,8 @@ afterEvaluate {
             create<MavenPublication>("release") {
                 from(components["release"])
                 groupId = "com.github.zhanibekishim"
-                artifactId = project.name
-                version = project.version.toString()
+                artifactId = "connect-sdk"
+                version = "1.5"
             }
         }
     }
