@@ -1,4 +1,3 @@
-import com.android.sdklib.computeFullReleaseName
 
 plugins {
     alias(libs.plugins.android.library)
@@ -11,7 +10,7 @@ android {
     compileSdk = 35
 
     defaultConfig {
-        minSdk = 35
+        minSdk = 21
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -53,5 +52,11 @@ afterEvaluate {
                 version = "1.12"
             }
         }
+        repositories {
+            maven {
+                url = uri("path_to_your_maven_repository") // Укажите путь к репозиторию
+            }
+        }
     }
+
 }
