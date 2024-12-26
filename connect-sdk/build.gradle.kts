@@ -8,10 +8,10 @@ plugins {
 
 android {
     namespace = "com.jax.connect_sdk"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
-        minSdk = 30
+        minSdk = 35
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -35,7 +35,13 @@ android {
     }
 }
 
-dependencies {}
+dependencies {
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.junit)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+}
 
 afterEvaluate {
     publishing {
@@ -43,8 +49,8 @@ afterEvaluate {
             create<MavenPublication>("release") {
                 from(components["release"])
                 groupId = "com.github.zhanibekishim"
-                artifactId = project.name
-                version = project.version.toString()
+                artifactId = "wisher-sdkTest"
+                version = "1.12"
             }
         }
     }
